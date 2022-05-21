@@ -1,16 +1,44 @@
-import React from 'react'
-import styled from 'styled-components'
-import logo from '../assets/logo.svg'
-import { FaBars } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import { links } from '../utils/constants'
-import CartButtons from './CartButtons'
-import { useProductsContext } from '../context/products_context'
-import { useUserContext } from '../context/user_context'
+import React from 'react';
+import styled from 'styled-components';
+import logo from '../assets/logo.svg';
+import { FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { links } from '../utils/constants';
+import CartButtons from './CartButtons';
+import { useProductsContext } from '../context/products_context';
+import { useUserContext } from '../context/user_context';
 
 const Nav = () => {
-  return <h4>navbar</h4>
-}
+  return (
+    <NavContainer>
+      <div className="nav-center">
+        <div className="nav-header">
+          {/* Place img inside link to go to Home page */}
+          <Link to="/">
+            <img src={logo} alt="nav-logo" />
+          </Link>
+          {/* Toggle Button NAV */}
+          <button type="button" className="nav-toggle">
+            <FaBars />
+          </button>
+        </div>
+        <ul className="nav-links">
+          {/* setting nav bar links with map  */}
+          {links.map((link) => {
+            const { id, text, url } = link;
+            return (
+              <li key={id}>
+                
+                {/* When clicked navigate to url */}
+                <Link to={url}>{text}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </NavContainer>
+  );
+};
 
 const NavContainer = styled.nav`
   height: 5rem;
@@ -77,6 +105,6 @@ const NavContainer = styled.nav`
       display: grid;
     }
   }
-`
+`;
 
-export default Nav
+export default Nav;
