@@ -28,13 +28,14 @@ const Nav = () => {
             const { id, text, url } = link;
             return (
               <li key={id}>
-                
                 {/* When clicked navigate to url */}
                 <Link to={url}>{text}</Link>
               </li>
             );
           })}
         </ul>
+        {/* 👇CartButtons */}
+        <CartButtons /> 
       </div>
     </NavContainer>
   );
