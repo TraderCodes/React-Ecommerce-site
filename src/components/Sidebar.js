@@ -8,17 +8,19 @@ import styled from 'styled-components';
 import CartButtons from './CartButtons';
 import { useUserContext } from '../context/user_context';
 
+// Also add onclick everytime user click on cart or login to close sidebar,
 const Sidebar = () => {
-  const data = useProductsContext()
-  console.log(data)
-  const isOpen = false;
+  const { isSidebarOpen,closeSidebar } = useProductsContext();
+
   return (
     <SidebarContainer>
-      <aside className={`${isOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+      <aside
+        className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}
+      >
         {/* header in the sidebar */}
         <div className="sidebar-header">
           <img src={logo} alt="trader" />
-          <button className="close-btn" type="button">
+          <button className="close-btn" type="button" onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
@@ -26,13 +28,17 @@ const Sidebar = () => {
           {links.map(({ id, text, url }) => {
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <Link to={url} onClick={closeSidebar}>
+                  {text} 
+                </Link>
               </li>
             );
           })}
           {/* Checkout Button to check out */}
-          <li >
-            <Link to='/checkout'>Checkout</Link>
+          <li>
+            <Link to="/checkout" onClick={closeSidebar}>
+              Checkout
+            </Link>
           </li>
         </ul>
         {/* Add cart and Login */}
