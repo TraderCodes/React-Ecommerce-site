@@ -1,12 +1,39 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import heroBcg from '../assets/hero-bcg.jpeg'
-import heroBcg2 from '../assets/hero-bcg-2.jpeg'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import heroBcg from '../assets/hero-bcg.jpeg';
+import heroBcg2 from '../assets/hero-bcg-2.jpeg';
 
+//! ADD TO HOME PAGE IN /PAGES
 const Hero = () => {
-  return <h4>hero</h4>
-}
+  return (
+    <Wrapper className="section-center">
+      <article className="content">
+        <h1>
+          design your <br />
+          comfort zone
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          vero ullam maxime sapiente, est, hic deleniti aspernatur tenetur
+          voluptate commodi magnam, debitis repellendus similique delectus
+          ratione itaque iure sequi! Aliquid dolorem itaque delectus? Ab illum
+          modi beatae impedit ad nesciunt? A ullam quae rerum distinctio unde.
+          Omnis quod cupiditate modi.
+        </p>
+        {/* Add button to navigate to shop store🌹 */}
+        <Link to="/products" className="btn hero-btn">
+          SHOP
+        </Link>
+      </article>
+      {/* Show case images  */}
+      <article className="img-container">
+        <img src={heroBcg} alt="bcg1" className="main-img" />
+        <img src={heroBcg2} alt="bcg2" className="accent-img" />
+      </article>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   min-height: 60vh;
@@ -68,6 +95,6 @@ const Wrapper = styled.section`
       border-radius: var(--radius);
     }
   }
-`
+`;
 
-export default Hero
+export default Hero;
