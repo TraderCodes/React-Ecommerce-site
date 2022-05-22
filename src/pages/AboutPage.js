@@ -1,11 +1,25 @@
-import React from 'react'
-import styled from 'styled-components'
-import { PageHero } from '../components'
-import aboutImg from '../assets/hero-bcg.jpeg'
+import React from 'react';
+import styled from 'styled-components';
+import { PageHero } from '../components';
+import aboutImg from '../assets/hero-bcg.jpeg';
 
 const AboutPage = () => {
-  return <h4>about page</h4>
-}
+  return (
+    <main>
+      <PageHero title="about" />
+      <Wrapper className="page section section-center">
+        <img src={aboutImg} alt="nice desk" />
+        <article>
+          <div className="title">
+            <h2>Our Story</h2>
+            <div className="underline"></div>
+          </div>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro vitae, aspernatur sunt animi amet ut a pariatur officia est expedita similique libero saepe maiores, ipsa, consectetur harum dolore deserunt adipisci autem dolorum doloremque. Totam fugiat sit, sapiente labore veritatis doloremque eligendi corrupti laborum recusandae. Ratione nisi eos qui sit culpa?</p>
+        </article>
+      </Wrapper>
+    </main>
+  );
+};
 
 const Wrapper = styled.section`
   display: grid;
@@ -33,5 +47,5 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
   }
-`
-export default AboutPage
+`;
+export default AboutPage;
