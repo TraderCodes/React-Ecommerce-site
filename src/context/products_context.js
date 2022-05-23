@@ -24,16 +24,23 @@ export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
-
   };
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
-
+  };
+  // ! Fetch
+  const fetchProducts = async (url) => {
+    const response = await axios.get(url);
+    console.log(response);
   };
 
-// ----------------------------------------------------
+  useEffect(() => {
+    // pass in url from utils files
+    fetchProducts(url);
+  },[]);
+  // ----------------------------------------------------
   return (
-    <ProductsContext.Provider value={{...state ,openSidebar,closeSidebar}}>
+    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
       {children}
     </ProductsContext.Provider>
   );
