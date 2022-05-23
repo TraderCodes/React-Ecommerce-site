@@ -15,7 +15,7 @@ import {
 
 const initialState = {
   isSidebarOpen: false,
-  products_loading: false,
+  products_loading: true,
   products_error: false,
   products: [],
   featured_products: [],
@@ -24,7 +24,7 @@ const initialState = {
 const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({ children }) => {
-  // reducer imported from line 3
+
   const [state, dispatch] = useReducer(reducer, initialState);
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
