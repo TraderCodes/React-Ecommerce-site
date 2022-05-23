@@ -15,11 +15,9 @@ const Services = () => {
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis
             doloribus hic quaerat dolor soluta reprehenderit ab aut nihil
-            assumenda libero, nobis odio eligendi natus blanditiis eveniet nemo
-            tempora quam neque!
+            assumenda libero,
           </p>
         </article>
-      </div>
 
       {/* Showcase the service */}
       <div className="services-center">
@@ -28,7 +26,7 @@ const Services = () => {
           const { id, icon, title, text } = service;
           return (
             // service block css
-
+            
             <article key={id} className="service">
               <span className="icon">{icon}</span>
               <h4>{title}</h4>
@@ -36,6 +34,7 @@ const Services = () => {
             </article>
           );
         })}
+        </div>
       </div>
     </Wrapper>
   );
