@@ -75,8 +75,11 @@ export const FilterProvider = ({ children }) => {
       value = e.target.dataset.color;
     }
     // change string to number
-    if (name ==='price') {
-      value = Number(value)
+    if (name === 'price') {
+      value = Number(value);
+    }
+    if (name === 'shipping') {
+      value = e.target.checked;
     }
     // onChange trigger dispatch in filters.js
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } }); //
