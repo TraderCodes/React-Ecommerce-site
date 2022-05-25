@@ -32,7 +32,7 @@ export const FilterProvider = ({ children }) => {
 
   return (
     // pass in the state so we can use it in everywhere else
-    <FilterContext.Provider value={{...state}}>
+    <FilterContext.Provider value={{ ...state }}>
       {children}
     </FilterContext.Provider>
   );

@@ -9,10 +9,7 @@ const ProductsPage = () => {
       <Wrapper className="page">
         <div className="section-center products">
           {/* filters on the left and sort + product on theright */}
-          
-
           <Filters />
-          
           <div>
             <Sort />
             <ProductList />
