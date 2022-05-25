@@ -17,7 +17,6 @@ const initialState = {
   all_products: [],
   grid_view: true,
   sort: 'price-lowest', // preset sort showcase
-
   filters: {
     text: '',
     company: 'all',
@@ -43,9 +42,12 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
   // ! 👆 now go to filter reducer and set the function
   useEffect(() => {
+    // so it filter and sort at the same time
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS }); //🟢
     // Only call the dispatch after Sort value is changed
-  }, [products, state.sort]);
+    // also when filter is changed
+  }, [products, state.sort, state.filters]);
   // --------------------TOGGLE GRID SORT--------------------
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW }); //🟢
@@ -61,10 +63,25 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value }); //🟢
   };
 
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    // onChange trigger dispatch in filters.js
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } }); //
+  };
+  const clearFilters = () => {};
+
   return (
     // pass in the state so we can use it in everywhere else
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>
