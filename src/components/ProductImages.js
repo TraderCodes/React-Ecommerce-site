@@ -1,9 +1,32 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-const ProductImages = () => {
-  return <h4>product images</h4>
-}
+// images = [] ONly show when item is inside array
+const ProductImages = ({ images = [{ url: '' }] }) => {
+  // display the first item in array which is the first image ,set it as main
+  const [main, setMain] = useState(images[0]);
+  return (
+    <Wrapper>
+      <img src={main.url} alt="mainImage" className="main" />
+      {/* image slide under main image */}
+      <div className="gallery">
+        {images.map((image, index) => {
+          return (
+            <img
+              src={image.url}
+              alt={image.filename}
+              key={index}
+              // !set onClick when click on Image it change to the main image
+              onClick={() => setMain(images[index])}
+              //! Set className to active when click on Image
+              className={image.url === main.url ? 'active' : null}
+            />
+          );
+        })}
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .main {
@@ -48,6 +71,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default ProductImages
+export default ProductImages;

@@ -53,7 +53,7 @@ const SingleProductPage = () => {
     reviews,
     id: sku,
     company,
-    image,
+    images,
   } = product;
   return (
     <Wrapper>
@@ -65,7 +65,8 @@ const SingleProductPage = () => {
         </Link>
         <div className="product-center ">
           {/* add components inported from ./components */}
-          <ProductImages />
+          {/* passing in the images into ProductImages */}
+          <ProductImages images={images} />
           <section className="content">
             <h2>{name}</h2>
             {/* star rating ⭐ */}
