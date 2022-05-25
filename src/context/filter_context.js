@@ -84,7 +84,9 @@ export const FilterProvider = ({ children }) => {
     // onChange trigger dispatch in filters.js
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } }); //
   };
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({ type:CLEAR_FILTERS})
+  };
 
   return (
     // pass in the state so we can use it in everywhere else
