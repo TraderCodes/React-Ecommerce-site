@@ -35,7 +35,9 @@ const SingleProductPage = () => {
     }
   }, [error]);
   useEffect(() => {
-    fetchSingleProduct(`s${url}${id}`);
+
+    // ! In order to fetch a single product, we need single product url plus the ID, Single item url is different from total product url in 
+    fetchSingleProduct(`${url}${id}`);
   }, [id]);
   if (loading) {
     return <Loading />;
@@ -43,7 +45,39 @@ const SingleProductPage = () => {
   if (error) {
     return <Error />;
   }
-  return <h4>single product page</h4>;
+  const {
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    image,
+  } = product;
+  return (
+    <Wrapper>
+      <PageHero title={`/ ${name}`} product />
+      {/* Send back to product button 👇 */}
+      <div className="section section-center page">
+        <Link to="/products" className="btn">
+          Go back to product page
+        </Link>
+        <div className="product-center ">
+          {/* add components inported from ./components */}
+          <ProductImages />
+          <section className="content">
+            <h2>{name}</h2>
+            {/* star rating ⭐ */}
+            <Stars />
+            {/* Price */}
+            <h5 className="price">{formatPrice(price)}</h5>
+          </section>
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.main`
