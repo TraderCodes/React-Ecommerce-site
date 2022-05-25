@@ -37,6 +37,7 @@ export const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    // products from prouctscontext is send in fomr filter_reducer.js when ithem is fethed
     dispatch({ type: LOAD_PRODUCTS, payload: products }); //🟢
     // Trigger dispatch when product is fetched, it will send the products to (filtered_products + all_products) in initialstate = payload
   }, [products]);
