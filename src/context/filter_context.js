@@ -16,8 +16,7 @@ const initialState = {
   filtered_products: [],
   all_products: [],
   grid_view: true,
-  // preset sort showcase
-  sort: 'price-lowest',
+  sort: 'price-lowest', // preset sort showcase
 };
 
 const FilterContext = React.createContext();
@@ -28,24 +27,27 @@ export const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    dispatch({ type: LOAD_PRODUCTS, payload: products });
-    // Trigger dispatch when product is fetched, it will send the products to (filtered_products + all_products) in initialstate
+    dispatch({ type: LOAD_PRODUCTS, payload: products }); //🟢
+    // Trigger dispatch when product is fetched, it will send the products to (filtered_products + all_products) in initialstate = payload
   }, [products]);
   // ! 👆 now go to filter reducer and set the function
-
+  useEffect(() => {
+    dispatch({ type: SORT_PRODUCTS }); //🟢
+    // Only call the dispatch after Sort value is changed
+  }, [products, state.sort]);
   // --------------------TOGGLE GRID SORT--------------------
   const setGridView = () => {
-    dispatch({ type: SET_GRIDVIEW });
+    dispatch({ type: SET_GRIDVIEW }); //🟢
   };
   const setListView = () => {
-    dispatch({ type: SET_LISTVIEW });
+    dispatch({ type: SET_LISTVIEW }); //🟢
   };
   // ------------------------------------------------
   const updateSort = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     // trigger dispatch when sort is changed
-    dispatch({ type: UPDATE_SORT, payload: value });
+    dispatch({ type: UPDATE_SORT, payload: value }); //🟢
   };
 
   return (
