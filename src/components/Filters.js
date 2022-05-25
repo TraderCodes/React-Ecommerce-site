@@ -49,10 +49,10 @@ const Filters = () => {
             />
           </div>
           {/* end search*/}
+          {/* //////////////////////////////////////////////////// */}
           {/* Categories */}
           <div className="form-control">
             <h5>Category</h5>
-            {/* return category options using map */}
             <div>
               {categories.map((c, index) => {
                 return (
@@ -61,13 +61,31 @@ const Filters = () => {
                     name="category"
                     key={index}
                     onClick={updateFilters}
-                    className={category === c.toLowerCase()?'active':null}
+                    className={category === c.toLowerCase() ? 'active' : null}
                   >
                     {c}
                   </button>
                 );
               })}
             </div>
+          </div>
+          {/* //////////////////////////////////////////////////////// */}
+          <div className="form-control">
+            <h5>Company</h5>
+            <select
+              name="company"
+              value={company}
+              onChange={updateFilters}
+              className="company"
+            >
+              {companies.map((company, index) => {
+                return (
+                  <option value={company} key={index}>
+                    {company}
+                  </option>
+                );
+              })}
+            </select>
           </div>
         </form>
       </div>
