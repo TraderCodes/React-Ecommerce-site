@@ -49,6 +49,26 @@ const Filters = () => {
             />
           </div>
           {/* end search*/}
+          {/* Categories */}
+          <div className="form-control">
+            <h5>Category</h5>
+            {/* return category options using map */}
+            <div>
+              {categories.map((c, index) => {
+                return (
+                  <button
+                    type="button"
+                    name="category"
+                    key={index}
+                    onClick={updateFilters}
+                    className={category === c.toLowerCase()?'active':null}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </form>
       </div>
     </Wrapper>

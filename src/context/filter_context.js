@@ -67,6 +67,10 @@ export const FilterProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    if (name === 'category') {
+      // let the value = the button text value
+      value = e.target.textContent;
+    }
     // onChange trigger dispatch in filters.js
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } }); //
   };
