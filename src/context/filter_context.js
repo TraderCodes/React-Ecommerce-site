@@ -31,7 +31,8 @@ export const FilterProvider = ({ children }) => {
   // ! 👆 now go to filter reducer and set the function
 
   return (
-    <FilterContext.Provider value="filter context">
+    // pass in the state so we can use it in everywhere else
+    <FilterContext.Provider value={{...state}}>
       {children}
     </FilterContext.Provider>
   );

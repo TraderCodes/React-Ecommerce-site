@@ -4,7 +4,10 @@ import GridView from './GridView'
 import ListView from './ListView'
 
 const ProductList = () => {
-  return <h4>product list</h4>
+  // Grab the reducer state from filter_context 
+  const {filtered_products:products} = useFilterContext()
+
+  return <GridView products ={products}></GridView>
 }
 
 export default ProductList
