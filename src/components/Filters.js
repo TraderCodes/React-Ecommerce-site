@@ -26,7 +26,8 @@ const Filters = () => {
   // different filters
   const categories = getUniqueValues(all_products, 'category');
   const companies = getUniqueValues(all_products, 'company');
-  const colors = getUniqueValues(all_products, 'color');
+  const colors = getUniqueValues(all_products, 'colors');
+  console.log(colors);
 
   return (
     <Wrapper>
@@ -86,6 +87,36 @@ const Filters = () => {
                 );
               })}
             </select>
+          </div>
+          {/* //////////////////////////////////////////////////////////////////// */}
+          <div className="form-control">
+            <h5>Colors</h5>
+            <div className="colors">
+              {colors.map((c, index) => {
+                if (c === 'all') {
+                  return (
+                    <button
+                      name="color"
+                      onClick={updateFilters}
+                      data-color="all"
+                      className={color === 'all' ? 'all-btn active' : 'all-btn'}
+                    >all</button>
+                  );
+                }
+                return (
+                  <button
+                    key={index}
+                    name="color"
+                    style={{ background:c }}
+                    className={color === c ? 'color-btn active' : 'color-btn'}
+                    data-color={c}
+                    onClick={updateFilters}
+                  >
+                    {color === c ? <FaCheck /> : null}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </form>
       </div>

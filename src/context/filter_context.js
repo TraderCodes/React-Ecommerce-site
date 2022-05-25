@@ -71,6 +71,9 @@ export const FilterProvider = ({ children }) => {
       // let the value = the button text value
       value = e.target.textContent;
     }
+    if (name === 'color') {
+      value = e.target.dataset.color;
+    }
     // onChange trigger dispatch in filters.js
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } }); //
   };
