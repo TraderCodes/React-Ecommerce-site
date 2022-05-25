@@ -4,16 +4,29 @@ import { BsFillGridFill, BsList } from 'react-icons/bs';
 import styled from 'styled-components';
 const Sort = () => {
   // we get grid_view to check what state is the grid in so we can sort it
-  const { filtered_products: products, grid_view } = useFilterContext();
+  const {
+    filtered_products: products,
+    grid_view,
+    setGridView,
+    setListView,
+  } = useFilterContext();
   return (
     <Wrapper>
       <div className="btn-container">
         {/* set toggle for the grid buttons  */}
         {/* if the grid_view is true we make the button active */}
-        <button type="button" className={grid_view ? 'active' : null}>
+        <button
+          type="button"
+          className={grid_view ? 'active' : null}
+          onClick={setGridView}
+        >
           <BsFillGridFill />
         </button>
-        <button type="button" className={!grid_view ? 'active' : null}>
+        <button
+          type="button"
+          className={!grid_view ? 'active' : null}
+          onClick={setListView}
+        >
           <BsList />
         </button>
       </div>

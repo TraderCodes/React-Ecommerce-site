@@ -31,9 +31,16 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
   // ! 👆 now go to filter reducer and set the function
 
+  const setGridView = () => {
+    dispatch({ type: SET_GRIDVIEW });
+  };
+  const setListView = () => {
+    dispatch({ type: SET_LISTVIEW });
+  };
+
   return (
     // pass in the state so we can use it in everywhere else
-    <FilterContext.Provider value={{ ...state }}>
+    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
       {children}
     </FilterContext.Provider>
   );
