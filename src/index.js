@@ -11,8 +11,9 @@ import { Auth0Provider } from '@auth0/auth0-react';
 ReactDOM.render(
   <ProductsProvider>
     <FilterProvider>
-
-    <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </FilterProvider>
   </ProductsProvider>,
 
