@@ -21,10 +21,17 @@ const AddToCart = ({ product }) => {
               <button
                 key={index}
                 style={{ background: color }}
-                className={mainColor === color ? 'color-btn active' : 'color-btn'}
+                // !change color strength when is clicked on / focus
+                className={
+                  mainColor === color ? 'color-btn active' : 'color-btn'
+                }
                 // setMaincolor to add to cart
                 onClick={() => setMainColor(color)}
-              ></button>
+              >
+                {/* add check on button */}
+                {mainColor === color ? <FaCheck /> : null}
+
+              </button>
             );
           })}
         </div>
