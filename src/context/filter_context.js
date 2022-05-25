@@ -16,6 +16,8 @@ const initialState = {
   filtered_products: [],
   all_products: [],
   grid_view: true,
+  // preset sort showcase
+  sort: 'price-lowest',
 };
 
 const FilterContext = React.createContext();
@@ -31,16 +33,26 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
   // ! 👆 now go to filter reducer and set the function
 
+  // --------------------TOGGLE GRID SORT--------------------
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW });
   };
   const setListView = () => {
     dispatch({ type: SET_LISTVIEW });
   };
+  // ------------------------------------------------
+  const updateSort = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    // trigger dispatch when sort is changed
+    dispatch({ type: UPDATE_SORT, payload: value });
+  };
 
   return (
     // pass in the state so we can use it in everywhere else
-    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
+    <FilterContext.Provider
+      value={{ ...state, setGridView, setListView, updateSort }}
+    >
       {children}
     </FilterContext.Provider>
   );
