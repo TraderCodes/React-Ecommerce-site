@@ -1,5 +1,5 @@
-import React, { useEffect, useContext, useReducer } from 'react'
-import reducer from '../reducers/filter_reducer'
+import React, { useEffect, useContext, useReducer } from 'react';
+import reducer from '../reducers/filter_reducer';
 import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
@@ -9,21 +9,34 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
-} from '../actions'
-import { useProductsContext } from './products_context'
+} from '../actions';
+import { useProductsContext } from './products_context';
+// filter reducer function
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+};
 
-const initialState = {}
-
-const FilterContext = React.createContext()
+const FilterContext = React.createContext();
 
 export const FilterProvider = ({ children }) => {
+  // grab products from product context
+  const { products } = useProductsContext();
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products });
+    // Trigger dispatch when product is fetched, it will send the products to (filtered_products + all_products) in initialstate
+  }, [products]);
+  // ! 👆 now go to filter reducer and set the function
+
   return (
-    <FilterContext.Provider value='filter context'>
+    <FilterContext.Provider value="filter context">
       {children}
     </FilterContext.Provider>
-  )
-}
+  );
+};
 // make sure use
 export const useFilterContext = () => {
-  return useContext(FilterContext)
-}
+  return useContext(FilterContext);
+};
