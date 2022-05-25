@@ -70,7 +70,8 @@ const SingleProductPage = () => {
           <section className="content">
             <h2>{name}</h2>
             {/* star rating ⭐ */}
-            <Stars />
+             
+            <Stars stars={stars} reviews = {reviews}/>
             {/* Price */}
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
