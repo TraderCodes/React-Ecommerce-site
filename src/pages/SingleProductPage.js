@@ -93,7 +93,7 @@ const SingleProductPage = () => {
             </p>
             <hr />
             {/* Only show addtocart when in stock */}
-            {stock > 0 && <AddToCart />}
+            {stock > 0 && <AddToCart product = {product}/>}
           </section>
         </div>
       </div>
