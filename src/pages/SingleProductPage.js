@@ -35,8 +35,7 @@ const SingleProductPage = () => {
     }
   }, [error]);
   useEffect(() => {
-
-    // ! In order to fetch a single product, we need single product url plus the ID, Single item url is different from total product url in 
+    // ! In order to fetch a single product, we need single product url plus the ID, Single item url is different from total product url in
     fetchSingleProduct(`${url}${id}`);
   }, [id]);
   if (loading) {
@@ -73,6 +72,26 @@ const SingleProductPage = () => {
             <Stars />
             {/* Price */}
             <h5 className="price">{formatPrice(price)}</h5>
+            <p className="desc">{description}</p>
+            {/* Check amount in stock */}
+            <p className="info">
+              <span> Available :</span>
+              {/* stock which is the item inside product that we fetch  */}
+              {stock > 0 ? 'In stock' : 'out of stock'}
+            </p>
+            <p className="info">
+              <span> SKU :</span>
+
+              {sku}
+            </p>
+            <p className="info">
+              <span> Brand :</span>
+
+              {company}
+            </p>
+            <hr />
+            {/* Only show addtocart when in stock */}
+            {stock > 0 && <AddToCart />}
           </section>
         </div>
       </div>
