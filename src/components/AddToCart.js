@@ -61,13 +61,13 @@ const AddToCart = ({ product }) => {
           })}
         </div>
       </div>
-      <div className="btn-container">
+      <div className="btn-container">s
         <AmountButtons
           amount={amount}
           increase={increase}
           decrease={decrease}
         />
-        <Link to="/cart" className="btn" onClick={() => addToCart()}>
+        <Link to="/cart" className="btn" onClick={() => addToCart(id,mainColor,amount,product)}>
           add to cart
         </Link>
       </div>
