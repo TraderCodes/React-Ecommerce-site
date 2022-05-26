@@ -22,18 +22,21 @@ const CartButtons = () => {
           <span className="cart-value">{total_items}</span>
         </span>
       </Link>
+      {myUser ? (
+        <button
+          type="button"
+          className="auth-btn"
+          // ! it;s in auth0 document
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          {myUser.name}  Logout<FaUserMinus />
+        </button>
+      ) : (
+        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
+          Login <FaUserPlus />
+        </button>
+      )}
       {/* Login  */}
-      <button type="button" className="auth-btn" onClick={loginWithRedirect}>
-        Login <FaUserPlus />
-      </button>
-      <button
-        type="button"
-        className="auth-btn"
-        // ! it;s in auth0 document
-        onClick={() => logout({ returnTo: window.location.origin })}
-      >
-        Logout <FaUserMinus />
-      </button>
     </Wrapper>
   );
 };
@@ -82,12 +85,13 @@ const Wrapper = styled.div`
     align-items: center;
     background: transparent;
     border-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     color: var(--clr-grey-1);
     letter-spacing: var(--spacing);
+    margin-left:20px ;
     svg {
-      margin-left: 5px;
+      margin-left: 6px;
     }
   }
 `;

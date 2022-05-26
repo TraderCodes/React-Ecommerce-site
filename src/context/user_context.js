@@ -5,11 +5,17 @@ const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
   const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
     useAuth0();
-  const [myUser, setMyUser] = useState(null);
-
+  const [myUser, setMyUser] = useState();
+ 
   // !Set the login inside the Cartbuttons.js
   useEffect(() => {
-    console.log(user);
+    // ! if isAuthenticated we want to set the user
+    if (isAuthenticated) {
+      setMyUser(user);
+    } else {
+      setMyUser(false);
+    }
+    
   }, [isAuthenticated]);
   return (
     <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>

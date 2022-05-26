@@ -12,7 +12,7 @@ const CartTotals = () => {
       <div>
         <article>
           <h5>
-            {' '}
+        
             subtotal : <span>{formatPrice(total_amount)}</span>
           </h5>
           <p>
