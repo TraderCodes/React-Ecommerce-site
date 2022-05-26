@@ -20,7 +20,15 @@ const CartPage = () => {
       </Wrapper>
     );
   }
-  return <h4>cart page</h4>;
+  // or else we show cart item
+  return (
+    <main>
+      <PageHero title="cart" />
+      <Wrapper className="page">
+        <CartContent />
+      </Wrapper>
+    </main>
+  );
 };
 
 const Wrapper = styled.main`
