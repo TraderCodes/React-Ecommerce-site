@@ -5,14 +5,14 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useUserContext } from '../context/user_context';
 // the rest on top is rest operator
 const PrivateRoute = ({ children, ...rest }) => {
-  const { myUser } = useUserContext();
+  const { user } = useAuth0();
   // use spread to spread the rest
   return (
     <Route
       {...rest}
       render={() => {
         // redirect to homepage if user is false
-        return myUser ? children : <Redirect to="/"></Redirect>;
+        return user ? children : <Redirect to="/"></Redirect>;
       }}
     ></Route>
   );
