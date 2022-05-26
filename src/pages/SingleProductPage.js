@@ -32,11 +32,14 @@ const SingleProductPage = () => {
       setTimeout(() => {
         history.push('/');
       }, 3000);
+  
     }
+    // eslint-disable-next-line
   }, [error]);
   useEffect(() => {
     // ! In order to fetch a single product, we need single product url plus the ID, Single item url is different from total product url in
     fetchSingleProduct(`${url}${id}`);
+    // eslint-disable-next-line
   }, [id]);
   if (loading) {
     return <Loading />;

@@ -33,11 +33,15 @@ const FeaturedProducts = () => {
       {/* item section */}
       <div className="section-container featured">
         {/* Featured products are the items filtered in product reducer */}
-  {/* //! Slice = amount of items to show in featured */}
-        {featured.slice(0,4).map((product) => {
-          return  <Product key={product.id} {...product}/>
+        {/* //! Slice = amount of items to show in featured */}
+        {featured.slice(0, 4).map((product) => {
+          return <Product key={product.id} {...product} />;
         })}
       </div>
+      <Link to="/products" className="btn">
+    
+        all products
+      </Link>
     </Wrapper>
   );
 };
