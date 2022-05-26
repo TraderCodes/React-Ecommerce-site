@@ -11,12 +11,13 @@ import {
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart');
   if (cart) {
-    return JSON.parse(localStorage.getItem(''));
+    return JSON.parse(localStorage.getItem('cart'));
   } else {
     return [];
   }
 };
 const initialState = {
+  // everytime when start , we call local storage
   cart: [],
   total_items: 0,
   total_amount: 0,
