@@ -7,11 +7,14 @@ export const UserProvider = ({ children }) => {
     useAuth0();
   const [myUser, setMyUser] = useState(null);
 
+  // !Set the login inside the Cartbuttons.js
   useEffect(() => {
     console.log(user);
   }, [isAuthenticated]);
   return (
-    <UserContext.Provider value={{loginWithRedirect,logout,myUser}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 // make sure use
