@@ -6,11 +6,16 @@ import { CartContent, PageHero } from '../components';
 
 const CartPage = () => {
   const { cart } = useCartContext();
+  // if cart item is less than 1
   if (cart.length < 1) {
     return (
       <Wrapper className="page-100">
         <div className="empty">
-          <h2>error</h2>
+          <h2>Your cart is empty </h2>
+          {/* Navigate back to product page to shop */}
+          <Link to="/products" className="btn">
+            fill it
+          </Link>
         </div>
       </Wrapper>
     );
