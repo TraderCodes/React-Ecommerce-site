@@ -10,7 +10,8 @@ import { useUserContext } from '../context/user_context';
 
 // Also add onclick everytime user click on cart or login to close sidebar,
 const Sidebar = () => {
-  const { isSidebarOpen,closeSidebar } = useProductsContext();
+  const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const { myUser } = useUserContext();
 
   return (
     <SidebarContainer>
@@ -29,17 +30,19 @@ const Sidebar = () => {
             return (
               <li key={id}>
                 <Link to={url} onClick={closeSidebar}>
-                  {text} 
+                  {text}
                 </Link>
               </li>
             );
           })}
           {/* Checkout Button to check out */}
-          <li>
-            <Link to="/checkout" onClick={closeSidebar}>
-              Checkout
-            </Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to="/checkout" onClick={closeSidebar}>
+                Checkout
+              </Link>
+            </li>
+          )}
         </ul>
         {/* Add cart and Login */}
         <CartButtons />
