@@ -18,6 +18,9 @@ const CartTotals = () => {
           <p>
             shipping fee : <span>{formatPrice(shipping_fee)}</span>
           </p>
+          <h4>
+            Order total : <span>{formatPrice(total_amount + shipping_fee)}</span>
+          </h4>
         </article>
         <Link to="/checkout" className="btn">
           Proceed to checkout

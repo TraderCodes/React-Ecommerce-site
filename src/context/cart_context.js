@@ -43,6 +43,8 @@ export const CartProvider = ({ children }) => {
 
   // ! everytime when cart itme is changed  we save it to local storage
   useEffect(() => {
+    //everytime when state.cart is change the CartIcon value is changed
+    dispatch({ type:COUNT_CART_TOTALS})
     // pass in the state.cart into storage
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);

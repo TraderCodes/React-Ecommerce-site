@@ -7,8 +7,9 @@ import { useCartContext } from '../context/cart_context';
 import { useUserContext } from '../context/user_context';
 
 const CartButtons = () => {
-  const {  closeSidebar } = useProductsContext();
-  
+  const { closeSidebar } = useProductsContext();
+  const { total_items } = useCartContext();
+
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
@@ -17,7 +18,7 @@ const CartButtons = () => {
           <FaShoppingCart />
 
           {/* cart dynamic value */}
-          <span className="cart-value">15</span>
+          <span className="cart-value">{total_items}</span>
         </span>
       </Link>
       {/* Login  */}
