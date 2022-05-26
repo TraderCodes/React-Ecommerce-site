@@ -7,7 +7,7 @@ import { CartContent, PageHero } from '../components';
 const CartPage = () => {
   const { cart } = useCartContext();
   // if cart item is less than 1
-  if (cart.length<1 ) {
+  if (cart.length < 1 ) {
     return (
       <Wrapper className="page-100">
         <div className="empty">
